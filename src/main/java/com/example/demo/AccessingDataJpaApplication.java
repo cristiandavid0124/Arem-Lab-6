@@ -1,56 +1,52 @@
 package com.example.demo;
 
-
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import java.util.Optional;
+
+import com.example.demo.model.Property;
+import com.example.demo.repository.PropertyRepository;
 
 @SpringBootApplication
 public class AccessingDataJpaApplication {
 
-  private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
 
-  public static void main(String[] args) {
-    SpringApplication.run(AccessingDataJpaApplication.class);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(AccessingDataJpaApplication.class, args);
+    }
 
-  @Bean
-  public CommandLineRunner demo(CustomerRepository repository) {
-    return (args) -> {
-      // save a few customers
-      repository.save(new Customer("Jack", "Bauer"));
-      repository.save(new Customer("Chloe", "O'Brian"));
-      repository.save(new Customer("Kim", "Bauer"));
-      repository.save(new Customer("David", "Palmer"));
-      repository.save(new Customer("Michelle", "Dessler"));
+    @Bean
+    public CommandLineRunner demo(PropertyRepository repository) {
+        return (args) -> {
 
-      // fetch all customers
-      log.info("Customers found with findAll():");
-      log.info("-------------------------------");
-      repository.findAll().forEach(customer -> {
-        log.info(customer.toString());
-      });
-      log.info("");
 
-      // fetch an individual customer by ID
-      Customer customer = repository.findById(1L);
-      log.info("Customer found with findById(1L):");
-      log.info("--------------------------------");
-      log.info(customer.toString());
-      log.info("");
+            repository.save(new Property("123 Main St", 300000, 1500, "Beautiful home"));
+            repository.save(new Property("456 Elm St", 250000, 1200, "Cozy apartment"));
+            repository.save(new Property("789 Oak St", 350000, 1800, "Spacious villa"));
+            repository.save(new Property("101 Pine St", 400000, 2000, "Modern house"));
+            repository.save(new Property("202 Maple St", 280000, 1400, "Charming cottage"));
 
-      // fetch customers by last name
-      log.info("Customer found with findByLastName('Bauer'):");
-      log.info("--------------------------------------------");
-      repository.findByLastName("Bauer").forEach(bauer -> {
-        log.info(bauer.toString());
-      });
-      log.info("");
-    };
-  }
-
+            log.info("Properties found with findAll():");
+            log.info("-------------------------------");
+            repository.findAll().forEach(property -> {
+                log.info(property.toString());
+            });
+            log.info("");
+            
+            Optional<Property> propertyOptional = repository.findById(1L);
+            log.info("Property found with findById(1L):");
+            log.info("--------------------------------");
+            if (propertyOptional.isPresent()) {
+                log.info(propertyOptional.get().toString());
+            } else {
+                log.info("No property found with ID 1");
+            }
+            log.info("");
+        };
+    }
 }
