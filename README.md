@@ -127,6 +127,8 @@ El diseño del sistema se basa en un enfoque orientado a objetos, utilizando cla
 
 ## Deployment
 
+(todas las modificaciones del codigo para el despligue estan el rama taller-parte2)
+
 -creamos dos instancias ec2 una para la base de datos y otra para la aplicacion 
 
 ![image](https://github.com/user-attachments/assets/6b98c064-41cd-451e-a411-49d3fe8b95da)
