@@ -82,11 +82,11 @@ Test
 
 
 ## Arquitectura del Sistema
-El sistema se divide en tres componentes principales:
+El sistema se divide en tres componentes :
 
 - **Frontend**: Desarrollado utilizando HTML y JavaScript, el frontend proporciona una interfaz de usuario para interactuar con los anuncios de propiedades. Se comunica con el backend a través de  Fetch API.
   
-- **Backend**: El backend está implementado utilizando Spring Boot, proporcionando endpoints RESTful para cada operación CRUD. Maneja la lógica de negocio y se comunica con la base de datos Sql desplegada en AWS con POST ,PUT, DELETE .
+- **Backend**: El backend está implementado utilizando Spring Boot Usando la arquitectura MVC , proporcionando endpoints RESTful para cada operación CRUD. Maneja la lógica de negocio y se comunica con la base de datos Sql desplegada en AWS con POST ,PUT, DELETE .
   
 - **Base de Datos**: Una base de datos MySQL almacena los detalles de las propiedades. Se utiliza JPA/Hibernate para el mapeo objeto-relacional, asegurando la persistencia de datos para todas las operaciones CRUD esta se encuentra al
 
