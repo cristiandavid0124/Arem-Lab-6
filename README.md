@@ -117,6 +117,14 @@ El diseño del sistema se basa en un enfoque orientado a objetos, utilizando cla
     - Validar los datos de entrada utilizando anotaciones de validación de Jakarta.
     - Devolver respuestas adecuadas al cliente, incluyendo códigos de estado HTTP y datos relevant
 
+
+
+## Class Diagram
+
+![image](https://github.com/user-attachments/assets/721bc47e-2337-4101-ab1f-9693bcc5d0d0)
+
+
+
 ## Deployment
 
 -creamos dos instancias ec2 una para la base de datos y otra para la aplicacion 
