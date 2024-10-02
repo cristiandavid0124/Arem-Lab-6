@@ -20,19 +20,34 @@ public class PropertyController {
 
     private final PropertyService propertyService;
 
+    /**
+     * Constructor para inyectar la dependencia del servicio de propiedades.
+     * 
+     * @param propertyService El servicio de propiedades que maneja la lógica de negocio.
+     */
     @Autowired
     public PropertyController(PropertyService propertyService) {
         this.propertyService = propertyService;
     }
 
-    // Create a new property
+    /**
+     * Crea una nueva propiedad en el sistema.
+     * 
+     * @param property Objeto Property que contiene los detalles de la nueva propiedad.
+     * @return ResponseEntity con la propiedad creada y el estado HTTP 201 (CREATED).
+     */
     @PostMapping
     public ResponseEntity<Property> createProperty(@Valid @RequestBody Property property) {
         Property createdProperty = propertyService.createProperty(property);
         return new ResponseEntity<>(createdProperty, HttpStatus.CREATED);
     }
 
-    // Get a property by ID
+    /**
+     * Obtiene una propiedad por su ID.
+     * 
+     * @param id El ID de la propiedad a buscar.
+     * @return ResponseEntity con la propiedad encontrada o una respuesta HTTP 404 (NOT FOUND) si no existe.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
         Optional<Property> property = propertyService.getPropertyById(id);
@@ -40,23 +55,39 @@ public class PropertyController {
                        .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    // Get all properties
+    /**
+     * Obtiene todas las propiedades disponibles.
+     * 
+     * @return Un iterable con todas las propiedades registradas en el sistema.
+     */
     @GetMapping
     public Iterable<Property> getAllProperties() {
         return propertyService.getAllProperties();
     }
 
-    // Update an existing property by ID
+    /**
+     * Actualiza una propiedad existente por su ID.
+     * 
+     * @param id El ID de la propiedad a actualizar.
+     * @param property Objeto Property con los nuevos detalles de la propiedad.
+     * @return ResponseEntity con la propiedad actualizada y el estado HTTP 200 (OK).
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Property> updateProperty(@PathVariable Long id, @Valid @RequestBody Property property) {
         Property updatedProperty = propertyService.updateProperty(id, property);
         return new ResponseEntity<>(updatedProperty, HttpStatus.OK);
     }
 
-    // Delete a property by ID
+    /**
+     * Elimina una propiedad por su ID.
+     * 
+     * @param id El ID de la propiedad a eliminar.
+     * @return ResponseEntity con el estado HTTP 204 (NO CONTENT) si la eliminación fue exitosa.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProperty(@PathVariable Long id) {
         propertyService.deleteProperty(id);
         return ResponseEntity.noContent().build();
     }
 }
+
