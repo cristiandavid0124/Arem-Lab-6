@@ -11,11 +11,21 @@ import java.util.Optional;
 import com.example.demo.model.Property;
 import com.example.demo.repository.PropertyRepository;
 
+
+/**
+ * Clase principal para la aplicación Spring Boot que accede a datos JPA.
+ * Esta clase inicia la aplicación y configura el contexto de Spring.
+ */
 @SpringBootApplication
 public class AccessingDataJpaApplication {
 
     private static final Logger log = LoggerFactory.getLogger(AccessingDataJpaApplication.class);
-
+    
+     /**
+     * Método principal que inicia la aplicación.
+     * 
+     * @param args Argumentos de línea de comandos pasados a la aplicación.
+     */
     public static void main(String[] args) {
         SpringApplication.run(AccessingDataJpaApplication.class, args);
     }
