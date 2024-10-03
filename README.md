@@ -47,7 +47,7 @@ mvn package install
 4. generar base de datos local docker
 
  ```
-docker-compose up
+docker-compose up -d
   ```
 
 6. ejecuta el codigo el codigo
