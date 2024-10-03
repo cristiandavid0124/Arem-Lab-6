@@ -116,8 +116,3 @@ public class Property {
     }
 }
 
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-}
