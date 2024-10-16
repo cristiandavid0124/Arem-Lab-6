@@ -4,6 +4,12 @@ document.getElementById('authForm').addEventListener('submit', function(event) {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
+    // Verificación de que la contraseña tenga al menos 6 caracteres
+    if (password.length < 6) {
+        alert("La contraseña debe tener al menos 6 caracteres.");
+        return; // Detener el envío del formulario si no se cumple la condición
+    }
+
     const isLogin = document.getElementById('formTitle').textContent === 'Iniciar Sesión';
 
     const url = isLogin ? '/login' : '/login/new'; 
@@ -19,7 +25,7 @@ document.getElementById('authForm').addEventListener('submit', function(event) {
     .then(response => {
         if (response.ok) {
             alert(isLogin ? 'Inicio de sesión exitoso' : 'Registro exitoso');
-             localStorage.setItem('username', username); 
+            localStorage.setItem('username', username); 
             if (isLogin) {
                 window.location.href = "properties.html";
             }
@@ -48,3 +54,4 @@ document.getElementById('toggleLink').addEventListener('click', function() {
         toggleLink.textContent = '¿No tienes cuenta? Regístrate aquí.';
     }
 });
+
