@@ -1,12 +1,14 @@
 package com.example.demo.repository;
 
+
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 import com.example.demo.model.Property;
+import com.example.demo.model.User;
 
-/**
- * Interfaz de repositorio para la entidad Property.
- * Proporciona operaciones CRUD para gestionar propiedades en la base de datos.
- */
 public interface PropertyRepository extends CrudRepository<Property, Long> {
+
+    List<Property> findByUser(User user);
 
 }

@@ -1,50 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real Estate CRUD System</title>
+    <title>Inicio de Sesión / Registro</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="container">
-        <h1>Real Estate Property Management</h1>
-
-        <form id="propertyForm">
-            <h2 id="formTitle">Add New Property</h2>
-
-            <input type="hidden" id="propertyId">
-
-            <label for="address">Address:</label>
-            <input type="text" id="address" required>
-
-            <label for="price">Price:</label>
-            <input type="number" id="price" required>
-
-            <label for="size">Size (sq ft):</label>
-            <input type="number" id="size" required>
-
-            <label for="description">Description:</label>
-            <textarea id="description" required></textarea>
-
-            <button type="submit">Save Property</button>
-        </form>
-
-        <h2>Property Listings</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Address</th>
-                    <th>Price</th>
-                    <th>Size</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="propertyList"></tbody>
-        </table>
+        <div class="form-container">
+            <h1 id="formTitle">Iniciar Sesión</h1>
+            <form id="authForm" method="POST" action="/login">
+                <label for="username">Usuario:</label>
+                <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                
+                <button type="submit" id="submitButton">Entrar</button>
+            </form>
+            <a href="#" class="toggle-link" id="toggleLink">¿No tienes cuenta? Regístrate aquí.</a>
+        </div>
     </div>
-    <script src="script.js"></script>
+
+    <script src="login.js"></script>
 </body>
 </html>

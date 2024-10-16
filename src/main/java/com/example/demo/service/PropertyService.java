@@ -3,6 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.model.Property;
+import com.example.demo.model.User;
 import com.example.demo.repository.PropertyRepository;
 
 import java.util.Optional;
@@ -43,7 +44,8 @@ public class PropertyService {
      * @param property la propiedad a crear
      * @return la propiedad creada
      */
-    public Property createProperty(Property property) {
+    public Property createProperty(Property property, User user) {
+        property.setUser(user); // Asocia la propiedad con el usuario
         return propertyRepository.save(property);
     }
 
